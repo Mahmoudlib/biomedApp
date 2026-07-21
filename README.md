@@ -1,4 +1,4 @@
-# BioMed Sénégal - Progressive Web App (PWA)
+# BioMed Sénégal -  Web App
 
 Une plateforme Progressive Web App (PWA) éducative dédiée au secteur biomedical du Senegal. Le but est d'aider les etudiants en genie biomedical de mieux comprendre ce domaine.
 
