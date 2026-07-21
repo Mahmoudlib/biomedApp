@@ -1,15 +1,15 @@
 # BioMed Sénégal - Progressive Web App (PWA)
 
-Une plateforme Progressive Web App (PWA) éducative et industrielle dédiée au secteur de la maintenance et de la distribution des équipements biomédicaux au Sénégal.
+Une plateforme Progressive Web App (PWA) éducative dédiée au secteur biomedical du Senegal. Le but est d'aider les etudiants en genie biomedical de mieux comprendre ce domaine.
 
-## 🚀 Fonctionnalités (Phase 1)
+##  Fonctionnalités (Phase 1)
 - **Tableau de Bord / Accueil** : Vue d'ensemble, recherche globale et raccourcis rapides.
 - **Catalogue des Appareils** : Liste complète d'équipements médicaux filtrables par spécialités (Imagerie, Bloc, Laboratoire, Cardiologie, Réanimation) et recherche dynamique.
 - **Fiches Techniques Détaillées** : Description clinique, principes de fonctionnement physiques, protocoles complets de maintenance préventive étape par étape, sources certifiées (OMS) et badges de vérification.
 - **Annuaire des Entreprises** : Répertoire géolocalisé (Sénégal) des entreprises partenaires et fournisseurs d'équipements biomédicaux avec actions directes (envoi d'email, site officiel, LinkedIn).
 - **Intégration PWA** : Fonctionnalités hors ligne via un Service Worker personnalisé et manifeste pour une installation sur mobile.
 
-## 🛠️ Installation et Lancement Local
+##  Installation et Lancement Local
 
 ### Prérequis
 - Python 3.10+
