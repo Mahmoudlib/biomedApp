@@ -43,11 +43,11 @@ Une plateforme Progressive Web App (PWA) éducative dédiée au secteur biomedic
    ```
    Accédez à l'application via `http://127.0.0.1:8000/`.
 
-## 🧪 Tests Unitaires
+##  Tests Unitaires
 Pour exécuter les tests de conformité de l'application :
 ```bash
 python manage.py test
 ```
 
-## ⚖️ Licence
+##  Licence
 Distribué sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
