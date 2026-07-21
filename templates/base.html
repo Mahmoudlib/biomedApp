@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta name="theme-color" content="#00478d"/>
+    <meta name="description" content="BioMed Sénégal - Plateforme éducative et hub d'équipements biomédicaux au Sénégal"/>
+    <link rel="manifest" href="/static/manifest.json"/>
+    <link rel="icon" type="image/svg+xml" href="/static/icons/icon.svg"/>
+    <link rel="apple-touch-icon" href="/static/icons/icon.svg"/>
+
+    <title>{% block title %}BioMed Sénégal - Hub Biomédical{% endblock %}</title>
+
+    <!-- Tailwind CSS with CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts: Manrope, Inter, Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet"/>
+
+    <!-- Google Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "primary": "#00478d",
+                "primary-container": "#f0f7ff",
+                "secondary": "#00658d",
+                "tertiary": "#BF4300",
+                "footer-primary": "#0065BA",
+                "footer-accent": "#00A0D6",
+                "footer-neutral": "#F1F4FA",
+                "background": "#fdfdfe",
+                "surface": "#ffffff",
+                "on-surface": "#1a1c1e",
+                "on-surface-variant": "#44474e",
+                "outline-variant": "#dee2e6"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.5rem",
+                "lg": "0.75rem",
+                "xl": "1rem",
+                "2xl": "1.5rem",
+                "3xl": "2rem",
+                "full": "9999px"
+              },
+              "fontFamily": {
+                "headline": ["Manrope", "sans-serif"],
+                "body": ["Inter", "sans-serif"],
+                "montserrat": ["Montserrat", "sans-serif"]
+              },
+              "boxShadow": {
+                "soft": "0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.02)",
+                "card": "0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.02)"
+              }
+            },
+          },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfdfe;
+            -webkit-tap-highlight-color: transparent;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: -0.01em;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .drawer-overlay {
+            transition: opacity 0.3s ease-in-out;
+            background: rgba(26, 46, 74, 0.45);
+            backdrop-filter: blur(2px);
+        }
+        .drawer-content {
+            transition: transform 0.3s ease-out;
+            width: 280px;
+            border-left: 1px solid #E0E8F2;
+        }
+        .hamburger-line {
+            width: 18px;
+            height: 1.5px;
+            background-color: #00478d;
+            transition: all 0.3s ease;
+        }
+        .menu-open .hamburger-line:nth-child(1) {
+            transform: translateY(5.5px) rotate(45deg);
+        }
+        .menu-open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-open .hamburger-line:nth-child(3) {
+            transform: translateY(-5.5px) rotate(-45deg);
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="text-on-surface min-h-screen flex flex-col antialiased bg-background pb-20">
+
+    <!-- Fixed Top Navigation Bar -->
+    <header class="fixed top-0 w-full z-40 bg-white/90 backdrop-blur-xl border-b border-outline-variant/30">
+        <div class="px-5 h-16 flex justify-between items-center max-w-4xl mx-auto">
+            <a href="{% url 'home' %}" class="flex flex-col">
+                <h1 class="font-extrabold text-lg text-primary leading-tight">Biomed Sénégal</h1>
+                <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-[0.1em]">FORMATION &amp; APPAREILS</p>
+            </a>
+            <div class="flex items-center gap-3">
+                <button id="menu-trigger" aria-label="Toggle Menu" class="w-11 h-11 flex flex-col items-center justify-center gap-[4px] hover:bg-black/5 rounded-full transition-colors active:scale-95 z-[210]">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-5 pt-20 pb-8 space-y-6">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-footer-primary relative text-white w-full overflow-hidden mt-12 mb-16">
+        <!-- SVG Wave Divider -->
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
+            <svg class="relative block w-full h-[28px] md:h-[40px]" viewbox="0 0 1200 120" preserveaspectratio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113,2,1200,42.63V0Z" fill="#fdfdfe"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-5 pt-[60px] pb-12 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Brand Block -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-[40px] h-[40px] rounded-lg border-2 border-white/90 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-2xl">biotech</span>
+                        </div>
+                        <div>
+                            <h3 class="font-montserrat text-[15px] font-bold tracking-wide uppercase">BioMed Sénégal</h3>
+                            <p class="text-[10px] font-medium text-white/60 uppercase tracking-widest">Éducation &amp; Technologie</p>
+                        </div>
+                    </div>
+                    <div class="w-12 h-1 bg-footer-accent rounded-full"></div>
+                    <p class="font-body text-xs leading-relaxed opacity-90">La plateforme de référence pour la formation biomédicale et le réseautage professionnel dans le secteur de la santé au Sénégal.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="font-montserrat text-xs font-bold uppercase tracking-[0.15em] text-white">Navigation</h4>
+                    <div class="w-8 h-1 bg-footer-accent rounded-full"></div>
+                    <ul class="space-y-2 text-xs font-medium">
+                        <li><a href="{% url 'home' %}" class="hover:text-footer-accent transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">home</span> Accueil</a></li>
+                        <li><a href="{% url 'device_list' %}" class="hover:text-footer-accent transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">ecg_heart</span> Appareils biomédicaux</a></li>
+                        <li><a href="{% url 'company_list' %}" class="hover:text-footer-accent transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">corporate_fare</span> Entreprises au Sénégal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Legal -->
+                <div class="space-y-4">
+                    <h4 class="font-montserrat text-xs font-bold uppercase tracking-[0.15em] text-white">Contact</h4>
+                    <div class="w-8 h-1 bg-footer-accent rounded-full"></div>
+                    <p class="text-xs opacity-90 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm text-footer-accent">mail</span>
+                        contact@biomed-app.com
+                    </p>
+                    <p class="text-xs opacity-90 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm text-footer-accent">location_on</span>
+                        Dakar, Sénégal
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-white/10 text-center md:text-left text-[11px] opacity-60 flex flex-col md:flex-row justify-between items-center gap-2">
+                <div>© 2026 BioMed Sénégal – AETQBM. Tous droits réservés.</div>
+                <div>Plateforme Mobile PWA</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed 3-Tab Bottom Navigation -->
+    {% include 'includes/bottom_nav.html' %}
+
+    <!-- Mobile Side Drawer Menu -->
+    <div id="drawer-container" class="fixed inset-0 z-[150] pointer-events-none">
+        <div id="drawer-backdrop" class="absolute inset-0 drawer-overlay opacity-0 cursor-pointer"></div>
+        <div id="drawer-content" class="absolute top-0 right-0 h-full bg-white transform translate-x-full drawer-content flex flex-col pointer-events-auto z-[200] shadow-2xl">
+            <div class="p-5 border-b border-outline-variant/40 flex justify-between items-center bg-primary text-white">
+                <h3 class="font-bold text-base">Menu BioMed</h3>
+                <button onclick="toggleDrawer()" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <nav class="flex-1 py-6 px-4 space-y-2">
+                <a href="{% url 'home' %}" class="flex items-center gap-4 px-4 h-12 rounded-xl hover:bg-[#F0F7FF] text-primary transition-colors">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="text-sm font-semibold">Accueil</span>
+                </a>
+                <a href="{% url 'device_list' %}" class="flex items-center gap-4 px-4 h-12 rounded-xl hover:bg-[#F0F7FF] text-on-surface transition-colors">
+                    <span class="material-symbols-outlined">ecg_heart</span>
+                    <span class="text-sm font-medium">Appareils biomédicaux</span>
+                </a>
+                <a href="{% url 'company_list' %}" class="flex items-center gap-4 px-4 h-12 rounded-xl hover:bg-[#F0F7FF] text-on-surface transition-colors">
+                    <span class="material-symbols-outlined">corporate_fare</span>
+                    <span class="text-sm font-medium">Entreprises au Sénégal</span>
+                </a>
+                <div class="pt-4 border-t border-outline-variant/30 mt-4 px-4">
+                    <p class="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-wider mb-2">Plateforme</p>
+                    <a href="mailto:contact@biomed-app.com" class="flex items-center gap-3 text-xs text-on-surface-variant py-2">
+                        <span class="material-symbols-outlined text-sm">mail</span> Contact Support
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Drawer JS & Service Worker JS -->
+    <script>
+        const menuTrigger = document.getElementById('menu-trigger');
+        const backdrop = document.getElementById('drawer-backdrop');
+        const drawerContainer = document.getElementById('drawer-container');
+        const drawerContent = document.getElementById('drawer-content');
+        let isOpen = false;
+
+        function toggleDrawer() {
+            isOpen = !isOpen;
+            if (isOpen) {
+                drawerContainer.classList.remove('pointer-events-none');
+                backdrop.classList.replace('opacity-0', 'opacity-100');
+                drawerContent.classList.replace('translate-x-full', 'translate-x-0');
+                menuTrigger.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                drawerContainer.classList.add('pointer-events-none');
+                backdrop.classList.replace('opacity-100', 'opacity-0');
+                drawerContent.classList.replace('translate-x-0', 'translate-x-full');
+                menuTrigger.classList.remove('menu-open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        if (menuTrigger) menuTrigger.addEventListener('click', toggleDrawer);
+        if (backdrop) backdrop.addEventListener('click', toggleDrawer);
+
+        // Register PWA Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/static/sw.js')
+                    .then(reg => console.log('PWA ServiceWorker registered with scope:', reg.scope))
+                    .catch(err => console.log('ServiceWorker registration failed:', err));
+            });
+        }
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

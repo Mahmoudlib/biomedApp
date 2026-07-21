@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}Entreprises biomédicales au Sénégal - BioMed Sénégal{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="space-y-2">
+    <div class="flex justify-between items-end">
+        <div>
+            <h2 class="text-2xl font-extrabold text-on-surface">Entreprises au Sénégal</h2>
+            <p class="text-xs text-on-surface-variant font-medium">Fournisseurs, distributeurs &amp; acteurs majeurs de la santé</p>
+        </div>
+        <div class="bg-secondary/10 text-secondary px-3 py-1.5 rounded-full font-bold text-xs whitespace-nowrap">
+            {{ companies.count }} entreprise{% if companies.count > 1 %}s{% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Search & Region Filters -->
+<section class="space-y-4">
+    <!-- Search Bar -->
+    <form action="{% url 'company_list' %}" method="get" class="flex gap-2">
+        {% if selected_region and selected_region != 'Toutes' %}
+        <input type="hidden" name="region" value="{{ selected_region }}"/>
+        {% endif %}
+        <div class="relative flex-1 bg-white border border-outline-variant/60 rounded-full h-14 flex items-center px-4 shadow-soft focus-within:ring-2 focus-within:ring-secondary transition-all">
+            <span class="material-symbols-outlined text-on-surface-variant">search</span>
+            <input name="q" value="{{ query }}" class="bg-transparent border-none w-full text-sm text-on-surface placeholder:text-on-surface-variant/60 focus:ring-0 px-3" placeholder="Rechercher une entreprise ou spécialité..." type="text"/>
+        </div>
+        <button type="submit" class="bg-secondary text-white h-14 w-14 rounded-full flex items-center justify-center shadow-soft hover:bg-secondary/90 transition-colors active:scale-95">
+            <span class="material-symbols-outlined">search</span>
+        </button>
+    </form>
+
+    <!-- Region Chips -->
+    <div class="flex overflow-x-auto gap-2.5 pb-2 scrollbar-hide -mx-5 px-5">
+        {% for reg in regions %}
+        <a href="?region={{ reg }}{% if query %}&q={{ query }}{% endif %}" 
+           class="px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap flex-shrink-0 transition-transform active:scale-95 border {% if selected_region == reg %}bg-secondary text-white border-secondary shadow-sm{% else %}bg-white text-on-surface border-outline-variant/60 hover:bg-secondary/5{% endif %}">
+            📍 {{ reg }}
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Scrollview List of Companies -->
+<section class="space-y-4">
+    {% if companies %}
+        {% for company in companies %}
+        <div class="bg-white rounded-2xl p-5 border border-outline-variant/60 shadow-soft flex flex-col space-y-4">
+            <div class="flex items-start gap-4">
+                <div class="w-16 h-16 bg-gray-50 rounded-2xl overflow-hidden flex-shrink-0 border border-outline-variant/30 shadow-sm flex items-center justify-center">
+                    {% if company.logo %}
+                    <img src="{{ company.logo }}" alt="{{ company.name }}" class="w-full h-full object-cover"/>
+                    {% else %}
+                    <span class="material-symbols-outlined text-secondary text-3xl">business</span>
+                    {% endif %}
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between gap-2 mb-1">
+                        <h3 class="font-bold text-base text-on-surface truncate">{{ company.name }}</h3>
+                        <span class="bg-secondary/10 text-secondary text-[10px] font-bold px-2.5 py-1 rounded-full uppercase flex-shrink-0">
+                            {{ company.region }}
+                        </span>
+                    </div>
+                    <p class="text-xs font-semibold text-secondary mb-1 truncate">{{ company.specialization }}</p>
+                    <p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed opacity-85">{{ company.description }}</p>
+                </div>
+            </div>
+
+            <div class="pt-3 border-t border-outline-variant/30 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <div class="flex items-center gap-3 text-on-surface-variant/70">
+                    <span class="flex items-center gap-1 font-medium"><span class="material-symbols-outlined text-sm text-secondary">location_on</span> {{ company.address|truncatechars:30 }}</span>
+                </div>
+
+                <a href="{% url 'company_detail' company.pk %}" class="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-primary px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+                    Fiche entreprise <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="bg-white rounded-2xl p-8 text-center border border-outline-variant/60 shadow-soft space-y-3">
+            <span class="material-symbols-outlined text-4xl text-on-surface-variant/40">business_off</span>
+            <h3 class="font-bold text-base text-on-surface">Aucune entreprise trouvée</h3>
+            <p class="text-xs text-on-surface-variant">Aucun résultat ne correspond à votre critère de recherche.</p>
+            <a href="{% url 'company_list' %}" class="inline-block bg-secondary text-white text-xs font-bold px-4 py-2 rounded-xl">Réinitialiser</a>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

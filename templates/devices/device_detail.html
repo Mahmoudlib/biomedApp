@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ device.name }} - BioMed Sénégal{% endblock %}
+
+{% block content %}
+<!-- Back Button Header -->
+<div class="flex items-center justify-between mb-2">
+    <a href="{% url 'device_list' %}" class="inline-flex items-center gap-2 text-xs font-bold text-primary bg-primary/10 px-3.5 py-2 rounded-xl hover:bg-primary/20 transition-colors">
+        <span class="material-symbols-outlined text-base">arrow_back</span> Retour au catalogue
+    </a>
+    <span class="text-xs text-on-surface-variant/60 font-semibold flex items-center gap-1">
+        <span class="material-symbols-outlined text-sm">visibility</span> {{ device.views_count }} vues
+    </span>
+</div>
+
+<!-- Device Hero Section -->
+<section class="rounded-3xl bg-primary p-6 relative overflow-hidden text-white shadow-card">
+    <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-footer-accent/20 blur-xl"></div>
+    <div class="relative z-10 space-y-4">
+        <div class="flex justify-between items-start">
+            <span class="bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20">
+                {{ device.category }}
+            </span>
+            <span class="bg-footer-accent text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                {{ device.badge_label }}
+            </span>
+        </div>
+
+        {% if device.image %}
+        <div class="w-full aspect-video rounded-2xl overflow-hidden border border-white/20 shadow-lg">
+            <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-cover"/>
+        </div>
+        {% endif %}
+
+        <div>
+            <h1 class="text-2xl font-extrabold leading-tight text-white mb-1">{{ device.name }}</h1>
+            <p class="text-xs text-white/80 leading-relaxed font-medium">Spécification technique biomédicale certifiée</p>
+        </div>
+    </div>
+</section>
+
+<!-- Content Sections Tabs / Accordion -->
+<div class="space-y-6">
+    <!-- Tab 1: Description -->
+    <div class="bg-white rounded-2xl p-5 border border-outline-variant/60 shadow-soft space-y-3">
+        <div class="flex items-center gap-3 text-primary border-b border-outline-variant/30 pb-3">
+            <div class="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">info</span>
+            </div>
+            <h3 class="font-bold text-base text-on-surface">Description clinique &amp; Présentation</h3>
+        </div>
+        <p class="text-sm text-on-surface-variant leading-relaxed font-medium whitespace-pre-line">
+            {{ device.description }}
+        </p>
+    </div>
+
+    <!-- Tab 2: Operating Principle -->
+    <div class="bg-white rounded-2xl p-5 border border-outline-variant/60 shadow-soft space-y-3">
+        <div class="flex items-center gap-3 text-secondary border-b border-outline-variant/30 pb-3">
+            <div class="w-9 h-9 rounded-xl bg-secondary/10 flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">settings_input_component</span>
+            </div>
+            <h3 class="font-bold text-base text-on-surface">Principe de fonctionnement</h3>
+        </div>
+        <p class="text-sm text-on-surface-variant leading-relaxed font-medium whitespace-pre-line">
+            {{ device.working_principle }}
+        </p>
+    </div>
+
+    <!-- Tab 3: Maintenance Protocol -->
+    <div class="bg-white rounded-2xl p-5 border border-outline-variant/60 shadow-soft space-y-3">
+        <div class="flex items-center gap-3 text-tertiary border-b border-outline-variant/30 pb-3">
+            <div class="w-9 h-9 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+                <span class="material-symbols-outlined text-xl">build_circle</span>
+            </div>
+            <h3 class="font-bold text-base text-on-surface">Protocole de maintenance préventive</h3>
+        </div>
+        
+        <div class="space-y-2">
+            {% for step in maintenance_steps %}
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-gray-50 border border-outline-variant/30">
+                <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{{ forloop.counter }}</span>
+                <p class="text-xs text-on-surface-variant font-medium leading-relaxed">{{ step }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Tab 4: Mandatory Source & Verification -->
+    <div class="bg-primary/5 rounded-2xl p-5 border border-primary/20 shadow-soft space-y-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2 text-primary font-bold text-sm">
+                <span class="material-symbols-outlined text-xl">verified</span>
+                Vérification &amp; Sources de Référence
+            </div>
+        </div>
+
+        <div class="space-y-2 text-xs">
+            <div class="bg-white p-3.5 rounded-xl border border-primary/10 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-base">verified_user</span>
+                    <div>
+                        <div class="font-bold text-on-surface">Organisme de certification</div>
+                        <div class="text-on-surface-variant opacity-80">{{ device.verified_by }}</div>
+                    </div>
+                </div>
+                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Certifié</span>
+            </div>
+
+            {% if device.source_url %}
+            <a href="{{ device.source_url }}" target="_blank" rel="noopener noreferrer" class="bg-white p-3.5 rounded-xl border border-primary/10 flex items-center justify-between gap-3 group hover:border-primary/40 transition-colors">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-base">link</span>
+                    <div>
+                        <div class="font-bold text-on-surface group-hover:text-primary transition-colors">Consulter la source officielle OMS / Fabricant</div>
+                        <div class="text-on-surface-variant opacity-70 truncate max-w-xs">{{ device.source_url }}</div>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">open_in_new</span>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %}BioMed Sénégal - Accueil{% endblock %}
+
+{% block content %}
+<!-- Search Section -->
+<section class="w-full">
+    <form action="{% url 'device_list' %}" method="get" class="flex items-center bg-white rounded-2xl shadow-soft border border-outline-variant/60 px-4 h-14 gap-3 focus-within:ring-4 focus-within:ring-primary/10 focus-within:border-primary/40 transition-all">
+        <span class="material-symbols-outlined text-primary font-bold">search</span>
+        <input name="q" value="{{ query }}" class="flex-1 bg-transparent border-none focus:ring-0 text-base text-on-surface placeholder:text-on-surface-variant/50 p-0 font-medium" placeholder="Rechercher un appareil ou une entreprise..." type="text"/>
+        <div class="h-6 w-px bg-outline-variant"></div>
+        <button type="submit" aria-label="Search" class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 hover:bg-primary/20 text-primary transition-colors active:scale-95">
+            <span class="material-symbols-outlined text-xl">arrow_forward</span>
+        </button>
+    </form>
+</section>
+
+<!-- Call to Actions -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <a href="{% url 'device_list' %}" class="group bg-white p-5 rounded-3xl shadow-soft border border-outline-variant/60 flex gap-4 items-center active:bg-gray-50 transition-all">
+        <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+            <span class="material-symbols-outlined text-primary text-2xl">biotech</span>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-bold text-base text-on-surface">Explorer les appareils médicaux</h3>
+            <p class="text-xs text-on-surface-variant leading-normal font-medium">Guides et maintenance clinique pas à pas.</p>
+        </div>
+        <div class="w-11 h-11 flex items-center justify-center text-primary group-hover:translate-x-1 transition-transform">
+            <span class="material-symbols-outlined text-2xl">arrow_forward</span>
+        </div>
+    </a>
+
+    <a href="{% url 'company_list' %}" class="group bg-white p-5 rounded-3xl shadow-soft border border-outline-variant/60 flex gap-4 items-center active:bg-gray-50 transition-all">
+        <div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
+            <span class="material-symbols-outlined text-secondary text-2xl">business_center</span>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-bold text-base text-on-surface">Découvrir les entreprises</h3>
+            <p class="text-xs text-on-surface-variant leading-normal font-medium">Collaborez avec les leaders du biotech au Sénégal.</p>
+        </div>
+        <div class="w-11 h-11 flex items-center justify-center text-secondary group-hover:translate-x-1 transition-transform">
+            <span class="material-symbols-outlined text-2xl">arrow_forward</span>
+        </div>
+    </a>
+</section>
+
+<!-- Featured Devices Section -->
+<section class="space-y-4">
+    <div class="flex justify-between items-center">
+        <h2 class="text-xl font-extrabold tracking-tight text-on-surface">Équipements récents &amp; vedettes</h2>
+        <a href="{% url 'device_list' %}" class="text-primary font-bold text-xs hover:underline flex items-center gap-1">
+            Voir tout <span class="material-symbols-outlined text-sm">chevron_right</span>
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {% for device in popular_devices %}
+        <a href="{% url 'device_detail' device.pk %}" class="bg-white rounded-3xl shadow-card border border-outline-variant/40 overflow-hidden flex flex-col group active:scale-[0.98] transition-transform">
+            <div class="h-44 bg-gray-50 overflow-hidden relative">
+                {% if device.image %}
+                <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                {% else %}
+                <div class="w-full h-full bg-primary/10 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined text-4xl">biotech</span>
+                </div>
+                {% endif %}
+                <div class="absolute top-3 right-3">
+                    <span class="bg-white/90 backdrop-blur-md text-primary text-[10px] font-bold px-2.5 py-1 rounded-lg border border-primary/10 shadow-sm uppercase tracking-wider">{{ device.badge_label }}</span>
+                </div>
+                <div class="absolute bottom-3 left-3">
+                    <span class="bg-primary/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">{{ device.category }}</span>
+                </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                    <h4 class="font-bold text-base text-on-surface mb-1 group-hover:text-primary transition-colors">{{ device.name }}</h4>
+                    <p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed opacity-80">{{ device.description }}</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center justify-between text-xs text-on-surface-variant/70 font-semibold">
+                    <span class="flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm text-primary">verified</span> {{ device.verified_by|truncatechars:28 }}
+                    </span>
+                    <span class="flex items-center gap-1 text-primary">
+                        Détails <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </span>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Industry Leaders Section -->
+<section class="space-y-4">
+    <div class="flex justify-between items-center">
+        <h2 class="text-xl font-extrabold tracking-tight text-on-surface">Leaders du secteur au Sénégal</h2>
+        <a href="{% url 'company_list' %}" class="text-primary font-bold text-xs hover:underline flex items-center gap-1">
+            Voir toutes <span class="material-symbols-outlined text-sm">chevron_right</span>
+        </a>
+    </div>
+
+    <div class="space-y-3">
+        {% for company in leader_companies %}
+        <a href="{% url 'company_detail' company.pk %}" class="group bg-white p-4 rounded-2xl border border-outline-variant/60 flex items-center gap-4 active:bg-gray-50 transition-all shadow-soft">
+            <div class="w-14 h-14 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0 border border-outline-variant/30 shadow-sm flex items-center justify-center">
+                {% if company.logo %}
+                <img src="{{ company.logo }}" alt="{{ company.name }}" class="w-full h-full object-cover"/>
+                {% else %}
+                <span class="material-symbols-outlined text-primary text-2xl">business</span>
+                {% endif %}
+            </div>
+            <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5">
+                    <h4 class="font-bold text-base text-on-surface truncate group-hover:text-primary transition-colors">{{ company.name }}</h4>
+                    <span class="bg-secondary/10 text-secondary text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">{{ company.region }}</span>
+                </div>
+                <p class="text-xs text-on-surface-variant font-medium opacity-75 truncate">{{ company.specialization }}</p>
+            </div>
+            <div class="w-10 h-10 flex items-center justify-center text-on-surface-variant/40 group-hover:text-primary group-hover:translate-x-1 transition-all">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

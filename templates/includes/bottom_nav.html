@@ -1,0 +1,33 @@
+{% comment %}
+Fixed 3-Tab Bottom Navigation Bar
+Tabs: Home (/), Devices (/devices/), Companies (/companies/)
+{% endcomment %}
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-outline-variant/30 px-6 py-2 shadow-2xl">
+  <div class="max-w-md mx-auto flex items-center justify-around">
+    
+    <!-- Tab 1: Home -->
+    <a href="{% url 'home' %}" class="flex flex-col items-center gap-1 group py-1 px-3 rounded-2xl transition-all {% if active_tab == 'home' %}text-primary font-bold{% else %}text-on-surface-variant/60 hover:text-primary font-medium{% endif %}">
+      <div class="w-10 h-8 flex items-center justify-center rounded-xl transition-colors {% if active_tab == 'home' %}bg-primary/10 text-primary{% else %}group-hover:bg-primary/5{% endif %}">
+        <span class="material-symbols-outlined text-2xl">home</span>
+      </div>
+      <span class="text-[11px] tracking-wide">Accueil</span>
+    </a>
+
+    <!-- Tab 2: Devices -->
+    <a href="{% url 'device_list' %}" class="flex flex-col items-center gap-1 group py-1 px-3 rounded-2xl transition-all {% if active_tab == 'devices' %}text-primary font-bold{% else %}text-on-surface-variant/60 hover:text-primary font-medium{% endif %}">
+      <div class="w-10 h-8 flex items-center justify-center rounded-xl transition-colors {% if active_tab == 'devices' %}bg-primary/10 text-primary{% else %}group-hover:bg-primary/5{% endif %}">
+        <span class="material-symbols-outlined text-2xl">ecg_heart</span>
+      </div>
+      <span class="text-[11px] tracking-wide">Appareils</span>
+    </a>
+
+    <!-- Tab 3: Companies -->
+    <a href="{% url 'company_list' %}" class="flex flex-col items-center gap-1 group py-1 px-3 rounded-2xl transition-all {% if active_tab == 'companies' %}text-primary font-bold{% else %}text-on-surface-variant/60 hover:text-primary font-medium{% endif %}">
+      <div class="w-10 h-8 flex items-center justify-center rounded-xl transition-colors {% if active_tab == 'companies' %}bg-primary/10 text-primary{% else %}group-hover:bg-primary/5{% endif %}">
+        <span class="material-symbols-outlined text-2xl">corporate_fare</span>
+      </div>
+      <span class="text-[11px] tracking-wide">Entreprises</span>
+    </a>
+
+  </div>
+</nav>

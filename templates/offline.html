@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Hors Ligne - BioMed Sénégal{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-3xl p-8 text-center border border-outline-variant/60 shadow-card space-y-4 my-8">
+    <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto">
+        <span class="material-symbols-outlined text-4xl">wifi_off</span>
+    </div>
+    <h1 class="text-2xl font-extrabold text-on-surface">Vous êtes hors ligne</h1>
+    <p class="text-xs text-on-surface-variant leading-relaxed max-w-sm mx-auto">
+        Vérifiez votre connexion internet. La plateforme BioMed Sénégal PWA conserve les pages déjà visitées accessibles hors ligne.
+    </p>
+    <a href="javascript:window.location.reload()" class="inline-block bg-primary text-white text-xs font-bold px-5 py-2.5 rounded-xl hover:bg-primary/90 transition-colors">
+        Réessayer la connexion
+    </a>
+</div>
+{% endblock %}
