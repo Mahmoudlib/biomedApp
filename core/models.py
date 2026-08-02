@@ -33,6 +33,22 @@ class Device(models.Model):
 
 
 class Company(models.Model):
+    REGION_CHOICES = [
+        ('Dakar', 'Dakar'),
+        ('Diourbel', 'Diourbel'),
+        ('Fatick', 'Fatick'),
+        ('Kaffrine', 'Kaffrine'),
+        ('Kaolack', 'Kaolack'),
+        ('Kédougou', 'Kédougou'),
+        ('Kolda', 'Kolda'),
+        ('Louga', 'Louga'),
+        ('Matam', 'Matam'),
+        ('Saint-Louis', 'Saint-Louis'),
+        ('Sédhiou', 'Sédhiou'),
+        ('Tambacounda', 'Tambacounda'),
+        ('Thiès', 'Thiès'),
+        ('Ziguinchor', 'Ziguinchor'),
+    ]
     name = models.CharField(max_length=255, verbose_name="Nom de l'entreprise")
     logo = models.URLField(max_length=500, blank=True, verbose_name="URL du Logo")
     specialization = models.CharField(max_length=255, verbose_name="Spécialisation / Domaine d'activité")
@@ -40,7 +56,8 @@ class Company(models.Model):
     website = models.URLField(max_length=500, blank=True, verbose_name="Site Web officiel")
     linkedin_url = models.URLField(max_length=500, blank=True, verbose_name="Page LinkedIn")
     description = models.TextField(verbose_name="Description & Services")
-    region = models.CharField(max_length=100, default="Dakar", verbose_name="Région / Ville (Sénégal)")
+    # region = models.CharField(max_length=100, default="Dakar", verbose_name="Région / Ville (Sénégal)")
+    region = models.CharField(max_length=100, choices=REGION_CHOICES, default='Dakar', verbose_name="Région / Ville (Sénégal)")
     address = models.CharField(max_length=255, verbose_name="Adresse physique")
     phone = models.CharField(max_length=50, blank=True, verbose_name="Téléphone")
     is_leader = models.BooleanField(default=False, verbose_name="Leader du secteur")
