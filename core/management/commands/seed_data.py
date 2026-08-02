@@ -11,72 +11,72 @@ class Command(BaseCommand):
         Device.objects.all().delete()
         Company.objects.all().delete()
 
-        # Seed Devices
+        # Seed Devices (matching user's local database)
         devices_data = [
             {
-                "name": "Électrocardiographe (ECG) 12 Pistes",
-                "category": "Cardiologie",
-                "badge_label": "Essentiel",
-                "is_featured": True,
-                "views_count": 1850,
-                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAmhrBUd84eCkaDDXEzl-eA2nWwruMEUyFu4uWo2ZflOQXH46Ac6WVaHoigfASlImLfBzMXJn9NWxWtJZnSNY86W2OsuKpnUhEcxPFK0rHlOLtSkqSJm0oJ9RfKXoNH1EJrYSwAxWuFL3bizxnNrv-VNDRqMDkb5UzA9sUmWUvhgkOxO8w0T0trt1svdotPywOrzRc3XQwIy6V1vxpiaqJHfc8Vr8Oyz-p_KHDjir7GmO21d9Qv8_5mldyE3EOV_138nnKLVLl9-g",
-                "description": "Appareil biomédical de diagnostic cardiovasculaire permettant d'enregistrer l'activité électrique du cœur à travers 12 dérivations simultanées. Indispensable pour la détection précoce des arythmies, de l'ischémie myocardique et de l'infarctus.",
-                "working_principle": "Le signal cardiaque électrique généré par le nœud sinusal se propage à travers les fibres musculaires. Des électrodes cutanées (4 de membres et 6 précordiales) captent les micro-variations de potentiel (de l'ordre du millivolt). Ces signaux analogiques sont amplifiés, filtrés contre le bruit réseau (50/60 Hz) et convertis par un processeur numérique pour un affichage sur écran et impression thermique.",
-                "maintenance_protocol": "1. Nettoyage des câbles et électrodes après chaque utilisation avec une solution désinfectante non corrosive.\n2. Contrôle hebdomadaire du niveau de papier thermique et calibration du zéro.\n3. Inspection mensuelle des câbles patients pour déceler toute usure ou rupture d'isolation.\n4. Vérification annuelle de la précision d'amplification et test de sécurité électrique (courants de fuite selon norme IEC 60601-1).",
-                "source_url": "https://www.who.int/medical_devices/publications/en/",
-                "verified_by": "Comité National d'Expertise Biomédicale (Dakar)"
-            },
-            {
-                "name": "Analyseur Biochimique Automatique",
+                "name": "AUTOMATE DE BIOCHIMIE",
                 "category": "Laboratoire",
                 "badge_label": "New Tech",
+                "image": "https://img.medicalexpo.com/images_me/photo-g/75772-12513096.jpg",
+                "description": "L'automate de biochimie est un équipement de laboratoire destiné à mesurer automatiquement différents paramètres biochimiques dans le sang, le sérum, le plasma ou les urines. Il permet la réalisation rapide et fiable d'analyses indispensables au diagnostic et au suivi des patients.",
+                "working_principle": "Après l'introduction de l'échantillon, l'automate distribue automatiquement les réactifs appropriés. Les réactions chimiques produites sont mesurées, généralement par photométrie ou turbidimétrie, puis converties en concentrations grâce aux courbes d'étalonnage intégrées.",
+                "maintenance_protocol": "•\tNettoyer les aiguilles de prélèvement. \r\n•\tVérifier les niveaux de réactifs et de solutions de lavage. \r\n•\tContrôler les cuvettes de réaction. \r\n•\tEffectuer le contrôle qualité quotidien.",
+                "source_url": "https://grenoblecognition.fr/automate-biochimie-definition-fonctionnement/",
+                "verified_by": "APEGBM",
                 "is_featured": True,
-                "views_count": 2140,
-                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCCnskvMaLqBLnr00zNpv_B6M_zMWFJYmhrYT-YFjF--5mWGS0xA2GvRFF-klPKD5i3HOoyNXHaROe1OKG9PnbgjToGQJIfLs9vfRLNfeIJ8ra4tohoVz53DwqBtCTWdn7qf1b-abEq7-RjXf7ZjJXSIqblHzNdaYno6WIgiCIM9oE7Vah3CKpVWN9qWPtcCDg0Ss_HDVWFef6GLyfrsrrPwn_txRnyy9OsTsx7ZFpOHHiwXE_yPzT2us_dMP7Ltpt0V_OydpL5hg",
-                "description": "Système automatisé à haut débit pour le dosage des paramètres biochimiques sanguins et urinaires (glycémie, urée, créatinine, transaminases, bilan lipidique).",
-                "working_principle": "Utilise la spectrophotométrie d'absorption moléculaire. Les réactifs spécifiques et les échantillons sont pipetés automatiquement dans des cuvettes réactionnelles thermostatées à 37°C. La variation d'absorbance de la réaction colorimétrique est mesurée par une photodiode à des longueurs d'onde précises selon la loi de Beer-Lambert (A = ε·c·L).",
-                "maintenance_protocol": "1. Purge et rinçage quotidien des circuits de fluide avec eau déionisée et détergent dédié.\n2. Calibration hebdomadaire avec sérums de contrôle de qualité (Niveaux Pathologique et Normal).\n3. Remplacement mensuel de la lampe photométrique et contrôle des filtres d'absorbance.\n4. Lubrification trimestrielle des bras d'aspiration robotisés.",
-                "source_url": "https://www.ifcc.org/ifcc-scientific-division/",
-                "verified_by": "Association des Biologistes du Sénégal"
+                "views_count": 390
             },
             {
-                "name": "Échographe Doppler Couleur Polyvalent",
-                "category": "Imagerie",
-                "badge_label": "Haute Précision",
+                "name": "ANALYSEUR D'HÉMATOLOGIE",
+                "category": "Laboratoire",
+                "badge_label": "Haute Technologie",
+                "image": "https://tse1.mm.bing.net/th/id/OIP.bo5fnY_osufm_WpLJwsgrQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+                "description": "L'analyseur d'hématologie est un automate de laboratoire permettant de réaliser automatiquement la numération et la caractérisation des cellules sanguines. Il est utilisé pour les examens de NFS (Numération Formule Sanguine) et contribue au diagnostic de nombreuses pathologies hématologiques.",
+                "working_principle": "L'échantillon sanguin est aspiré puis analysé grâce à des techniques telles que l'impédance électrique, la cytométrie en flux et la spectrophotométrie. Les cellules sont comptées, différenciées et les résultats sont automatiquement calculés puis affichés.",
+                "maintenance_protocol": "•\tNettoyer les sondes d'aspiration. \r\n•\tVérifier les niveaux de réactifs. \r\n•\tEffectuer le contrôle qualité interne. \r\n•\tÉliminer les déchets liquides.",
+                "source_url": "https://www.antonmedical.com/fra/article-5678177209625242.html",
+                "verified_by": "AEPGBM",
                 "is_featured": False,
-                "views_count": 1420,
-                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCcZImEckgD1Yb6BDU0yNFpnmR7d_bpsBw2D7JCKf7cjp6_RWyq2bw7mkCs-KS3vrIt4ePxsJ2Bfs5VZYUC6rG8SfzxrzLFYT7nXQBRFTpehFNqDBLP-pNmX4OJKZGzoIiWkaYBG132ujgNQMuoFMKDoRhThM0JkyeC_wVSAIUIABrV3hQ8IXaEBRWW1w6O-F67wzkPcb6eui2WSZAUsscEmlqhexVzBGk-GG6fbJRyWzNfo2PORJNUG1ci4h-p3PG8WwGmTVqkXw",
-                "description": "Système d'imagerie ultrasonore en temps réel équipé de sondes convexes, linéaires et endocavitaires. Permet l'exploration abdominale, obstétricale et vasculaire par Doppler pulsé et couleur.",
-                "working_principle": "Repose sur l'effet piézoélectrique. Des cristaux synthétiques situés dans la sonde émettent des impulsions d'ultrasons (2.5 à 15 MHz) qui se propagent dans le corps humain. Les échos réfléchis aux interfaces de différentes impédances acoustiques sont captés, amplifiés et convertis en images en coupe (mode B) et cartographie vasculaire (mode Doppler).",
-                "maintenance_protocol": "1. Inspection visuelle quotidienne des cristaux et du câble de sonde (absence de fissure du gel conductif).\n2. Désinfection de haut niveau des sondes de contact avec lingettes bactéricides certifiées.\n3. Dépoussiérage mensuel des filtres à air du système de refroidissement vidéo.\n4. Calibration semestrielle du gain et des courbes de compensation de profondeur (TGC).",
-                "source_url": "https://www.isuog.org/clinical-resources.html",
-                "verified_by": "Société Sénégalaise de Radiologie & Imagerie Médicale"
+                "views_count": 273
             },
             {
-                "name": "Défibrillateur Cardiaque Biphasique avec DSA",
+                "name": "CENTRIFUGEUSE",
+                "category": "Laboratoire",
+                "badge_label": "New Tech",
+                "image": "https://th.bing.com/th/id/OIP.-wGuxfeqB3q_atm4Z2kSAwHaHa?w=170&h=180&c=7&r=0&o=7&dpr=1.6&pid=1.7&rm=3",
+                "description": "La centrifugeuse est un équipement de laboratoire utilisé pour séparer les différents constituants d'un échantillon (sang, urine ou autres liquides biologiques) en fonction de leur densité grâce à la force centrifuge. Elle est indispensable dans les laboratoires d'analyses médicales, de recherche et de biologie clinique.",
+                "working_principle": "La centrifugeuse met en rotation un rotor à grande vitesse afin de générer une force centrifuge. Sous l'effet de cette force, les particules les plus denses migrent vers le fond du tube tandis que les constituants les plus légers restent en surface, permettant ainsi leur séparation.",
+                "maintenance_protocol": "•\tNettoyer la chambre et le rotor après utilisation. \r\n•\tVérifier l'état des godets et des adaptateurs. \r\n•\tContrôler le verrouillage du couvercle. \r\n•\tS'assurer du bon équilibrage des charges.",
+                "source_url": "https://fr.kindle-tech.com/faqs/how-does-a-centrifuge-work-and-for-what-purpose",
+                "verified_by": "APEGBM",
+                "is_featured": False,
+                "views_count": 113
+            },
+            {
+                "name": "MONITEUR MULTIPARAMETRIQUE",
                 "category": "Réanimation",
-                "badge_label": "Urgence VIP",
+                "badge_label": "New Tech",
+                "image": "https://th.bing.com/th/id/OIP.0gz8THuUizcw3X2dWsnY0AHaFj?w=241&h=181&c=7&r=0&o=7&dpr=1.6&pid=1.7&rm=3",
+                "description": "Le moniteur multiparamétrique est un dispositif de surveillance permettant le suivi continu des principaux paramètres physiologiques du patient pendant une intervention chirurgicale ou en soins intensifs. Il contribue à la détection précoce des anomalies et à la sécurité du patient.",
+                "working_principle": "Le moniteur recueille les données provenant de différents capteurs (ECG, SpO₂, pression artérielle, température, fréquence respiratoire, etc.). Les signaux sont traités par l'unité centrale puis affichés en temps réel. Des alarmes visuelles et sonores sont déclenchées lorsque les paramètres dépassent les limites définies.",
+                "maintenance_protocol": "•\tVérifier les câbles et les capteurs. \r\n•\tContrôler le fonctionnement de l'écran et des alarmes. \r\n•\tNettoyer les accessoires réutilisables. \r\n•\tVérifier le niveau de charge de la batterie.",
+                "source_url": "https://www.medical.fr/annonces/6156524-neuf-moniteur-multiparametrique-de-surveillance-edan-im50-ecg-pni-spo2-resp-avec-co2-capnographie-special-jo-paris-2024",
+                "verified_by": "APGBM",
                 "is_featured": False,
-                "views_count": 1690,
-                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuC7_oQ4xma8jbDLg4yTgtsgOnou9MQcXZ4KY_9Z27NXFVEdVuiAGFg3xP8MP4MA3HeTjdaem8AYsmfscZki0wg6GxncX2ZlXhQmBURaTLm3fwozHM1ixSFdohn0meJBTdziqo7J6TYTpmHYJU22pyhaSIoe4AWwPCtvQqXY3vzh5424leyhYTQXkcXr33kR4HGpvkqeHsaHOZPerslTEUxqwqjvkIHDV-WD7rB_uIYYQWPEGfGPM5byLkdCY7WKWn4zTMKZL4myQw",
-                "description": "Dispositif médical d'urgence délivrant un choc électrique externe pour restaurer un rythme cardiaque sinusal normal lors d'une fibrillation ventriculaire ou d'une tachycardie ventriculaire sans pouls.",
-                "working_principle": "Un condensateur haute tension emmagasine l'énergie électrique programmée (jusqu'à 200 Joules). Lors de la décharge par les électrodes/pales, l'onde électrique biphasique traverse le myocarde dans un sens puis dans le sens inverse, dépolarisant simultanément les cellules cardiaques pour redémarrer le stimulateur naturel du cœur.",
-                "maintenance_protocol": "1. Auto-test quotidien automatique (état de la batterie et tension des condensateurs).\n2. Vérification visuelle quotidienne du voyant d'état (vert/rouge) et péremption des électrodes adhésives.\n3. Test mensuel d'impulsion sur charge fictive de 50 Ohms avec mesure de l'énergie réelle délivrée.\n4. Remplacement de la batterie interne au lithium tous les 3 ans.",
-                "source_url": "https://www.resus.org.uk/guidelines",
-                "verified_by": "SAMU National du Sénégal"
+                "views_count": 1201
             },
             {
-                "name": "Bistouri Électrique / Générateur Électrochirurgical",
+                "name": "BISTOURI ÉLECTRIQUE",
                 "category": "Bloc opératoire",
-                "badge_label": "Chirurgie",
+                "badge_label": "New Tech",
+                "image": "https://tse3.mm.bing.net/th/id/OIP._BkhEqPqTboxmQmJsr6GNwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+                "description": "Le bistouri électrique est un équipement chirurgical utilisant un courant électrique à haute fréquence pour réaliser la coupe des tissus et assurer la coagulation des vaisseaux sanguins. Il permet de limiter les pertes sanguines et d'améliorer la précision des gestes chirurgicaux.",
+                "working_principle": "Le générateur produit un courant électrique à haute fréquence transmis à une électrode active. Au contact des tissus, ce courant génère une chaleur localisée permettant soit la coupe, soit la coagulation selon le mode sélectionné. Le courant retourne ensuite vers le générateur par une plaque de retour en mode monopolaire ou par une seconde électrode en mode bipolaire.",
+                "maintenance_protocol": "•\tVérifier les câbles et les électrodes. \r\n•\tContrôler la plaque-patient. \r\n•\tTester les commandes et la pédale. \r\n•\tVérifier les alarmes.",
+                "source_url": "https://www.medlikim.com/produit/bistouri-electrique/",
+                "verified_by": "APEGBM",
                 "is_featured": False,
-                "views_count": 980,
-                "image": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
-                "description": "Équipement de bloc opératoire produisant des courants haute fréquence (HF) pour la coupe et la coagulation thermique tissulaire en chirurgie générale, gynécologique et orthopédique.",
-                "working_principle": "Utilise un courant alternatif HF (300 kHz à 3 MHz) appliqué via une électrode active de faible surface. L'effet Joule concentré élève instantanément la température cellulaire, causant la vaporisation (coupe) ou la dénaturation protéique (coagulation), tandis qu'une plaque neutre assure le retour sécurisé du courant.",
-                "maintenance_protocol": "1. Test du système de surveillance de la plaque neutre (REM / CQM) avant chaque intervention.\n2. Contrôle visuel de l'isolation du câble de pédale et des manches monopolaire/bipolaire.\n3. Vérification trimestrielle de la puissance de sortie mesurée sur analyseur électrochirurgical HF.\n4. Contrôle annuel d'étanchéité électrique et de prise de terre.",
-                "source_url": "https://www.aorn.org/",
-                "verified_by": "Ordre des Médecins du Sénégal"
+                "views_count": 1203
             }
         ]
 
