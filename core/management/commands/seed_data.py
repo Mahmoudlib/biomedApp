@@ -143,3 +143,11 @@ class Command(BaseCommand):
         for c in companies_data:
             Company.objects.create(**c)
         self.stdout.write(self.style.SUCCESS(f"Successfully seeded {len(companies_data)} companies."))
+
+        # Create default superuser if it doesn't exist
+        from django.contrib.auth.models import User
+        if not User.objects.filter(username='admin').exists():
+            User.objects.create_superuser('admin', 'admin@biomed-app.com', 'adminpass')
+            self.stdout.write(self.style.SUCCESS("Superuser 'admin' created with password 'adminpass'"))
+        else:
+            self.stdout.write(self.style.SUCCESS("Superuser 'admin' already exists"))
