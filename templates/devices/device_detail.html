@@ -96,23 +96,13 @@
         </div>
 
         <div class="space-y-2 text-xs">
-            <div class="bg-white p-3.5 rounded-xl border border-primary/10 flex items-center justify-between gap-3">
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary text-base">verified_user</span>
-                    <div>
-                        <div class="font-bold text-on-surface">Organisme de certification</div>
-                        <div class="text-on-surface-variant opacity-80">{{ device.verified_by }}</div>
-                    </div>
-                </div>
-                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Certifié</span>
-            </div>
 
             {% if device.source_url %}
             <a href="{{ device.source_url }}" target="_blank" rel="noopener noreferrer" class="bg-white p-3.5 rounded-xl border border-primary/10 flex items-center justify-between gap-3 group hover:border-primary/40 transition-colors">
                 <div class="flex items-center gap-2">
                     <span class="material-symbols-outlined text-primary text-base">link</span>
                     <div>
-                        <div class="font-bold text-on-surface group-hover:text-primary transition-colors">Consulter la source officielle OMS / Fabricant</div>
+                        <div class="font-bold text-on-surface group-hover:text-primary transition-colors">Consulter la source </div>
                         <div class="text-on-surface-variant opacity-70 truncate max-w-xs">{{ device.source_url }}</div>
                     </div>
                 </div>
