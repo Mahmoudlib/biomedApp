@@ -73,15 +73,47 @@ companies_data = [
         "phone": "+221 33 824 15 15",
         "is_leader": False,
     },
+    {
+        "name": "Delta Médical",
+        "logo": "",
+        "specialization": "Gynécologie-obstétrique, stérilisation et équipements hospitaliers généraux",
+        "email": "contact@deltamedical.sn",
+        "website": "https://www.deltamedical.sn",
+        "linkedin_url": "https://www.linkedin.com/company/delta-medical-sn/",
+        "description": "Fournisseur d'équipements pour la santé maternelle et infantile, tables d'opération, autoclaves de stérilisation et systèmes d'aspiration médicale.",
+        "region": "Dakar",
+        "address": "Bourguiba, Immeuble Delta, Dakar, Sénégal",
+        "phone": "+221 33 824 90 90",
+        "is_leader": False,
+    },
+    {
+        "name": "BioTech Sénégal",
+        "logo": "",
+        "specialization": "Maintenance biomédicale, métrologie et contrôle qualité des dispositifs médicaux",
+        "email": "support@biotech-senegal.com",
+        "website": "https://www.biotech-senegal.com",
+        "linkedin_url": "https://www.linkedin.com/company/biotech-senegal/",
+        "description": "Entreprise de services spécialisée dans l'ingénierie biomédicale, l'audit du parc matériel des structures de santé et le contrôle réglementaire des dispositifs médicaux.",
+        "region": "Thiès",
+        "address": "Quartier Escale, Thiès, Sénégal",
+        "phone": "+221 33 951 20 20",
+        "is_leader": False,
+    }
 ]
 
-count = 0
+created_count = 0
+updated_count = 0
+
 for company_info in companies_data:
-    obj, created = Company.objects.get_or_create(name=company_info["name"], defaults=company_info)
+    obj, created = Company.objects.update_or_create(
+        name=company_info["name"],
+        defaults=company_info
+    )
     if created:
         print(f"Entreprise créée : {obj.name}")
-        count += 1
+        created_count += 1
     else:
-        print(f"Entreprise déjà existante : {obj.name}")
+        print(f"Entreprise mise à jour : {obj.name}")
+        updated_count += 1
 
-print(f"\n{count} nouvelles entreprises importées avec succès !")
+print(f"\nTerminé ! {created_count} créées, {updated_count} mises à jour.")
