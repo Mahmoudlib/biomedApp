@@ -20,11 +20,11 @@ class Command(BaseCommand):
                 "image": "https://img.medicalexpo.com/images_me/photo-g/75772-12513096.jpg",
                 "description": "L'automate de biochimie est un équipement de laboratoire destiné à mesurer automatiquement différents paramètres biochimiques dans le sang, le sérum, le plasma ou les urines. Il permet la réalisation rapide et fiable d'analyses indispensables au diagnostic et au suivi des patients.",
                 "working_principle": "Après l'introduction de l'échantillon, l'automate distribue automatiquement les réactifs appropriés. Les réactions chimiques produites sont mesurées, généralement par photométrie ou turbidimétrie, puis converties en concentrations grâce aux courbes d'étalonnage intégrées.",
-                "maintenance_protocol": "•\tNettoyer les aiguilles de prélèvement. \r\n•\tVérifier les niveaux de réactifs et de solutions de lavage. \r\n•\tContrôler les cuvettes de réaction. \r\n•\tEffectuer le contrôle qualité quotidien.",
+                "maintenance_protocol": "•\tNettoyer les aiguilles de prélèvement. \r\n•\tVérifier les niveaux de réactifs and de solutions de lavage. \r\n•\tContrôler les cuvettes de réaction. \r\n•\tEffectuer le contrôle qualité quotidien.",
                 "source_url": "https://grenoblecognition.fr/automate-biochimie-definition-fonctionnement/",
                 "verified_by": "APEGBM",
                 "is_featured": True,
-                "views_count": 390
+                "views_count": 391
             },
             {
                 "name": "ANALYSEUR D'HÉMATOLOGIE",
@@ -37,7 +37,7 @@ class Command(BaseCommand):
                 "source_url": "https://www.antonmedical.com/fra/article-5678177209625242.html",
                 "verified_by": "AEPGBM",
                 "is_featured": False,
-                "views_count": 273
+                "views_count": 275
             },
             {
                 "name": "CENTRIFUGEUSE",
@@ -84,59 +84,85 @@ class Command(BaseCommand):
             Device.objects.create(**d)
         self.stdout.write(self.style.SUCCESS(f"Successfully seeded {len(devices_data)} devices."))
 
-        # Seed Companies
+        # Seed Companies (matching user's local database)
         companies_data = [
             {
-                "name": "BioMed Sénégal SARL",
-                "specialization": "Distribution & Maintenance d'Équipements Biomédicaux",
+                "name": "Afrique Conception Distribution (ACD)",
+                "specialization": "Études, distribution et gestion d’équipements d’imagerie, de soins et d'infrastructures biomédicales clés en main",
                 "region": "Dakar",
-                "address": "Avenue Cheikh Anta Diop, Immeuble Horizon, Dakar",
-                "email": "contact@biomed-senegal.sn",
-                "website": "https://biomed-senegal.sn",
-                "linkedin_url": "https://linkedin.com/company/biomed-senegal",
-                "phone": "+221 33 825 40 40",
+                "address": "Sicap Liberté 4 – Lot B 104",
+                "email": "contact@acd.sn",
+                "website": "https://acd.sn/",
+                "linkedin_url": "https://www.linkedin.com/company/afrique-conception-distribution/",
+                "phone": "+221 33 825 74 52",
                 "is_leader": True,
-                "logo": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=200&q=80",
-                "description": "Leader sénégalais dans l'importation, l'installation et la maintenance de dispositifs médicaux de pointe. Partenaire agréé des hôpitaux universitaires (CHANN, Fann, Dantec) et des cliniques privées."
+                "logo": "https://acd.sn/wp-content/uploads/2025/04/acd_1.png",
+                "description": "Afrique Conception Distribution (ACD) accompagne la modernisation des infrastructures sanitaires en fournissant des équipements de haute technologie biomédicale, de biologie médicale et de radiologie, accompagnés d'un service d'ingénierie et de maintenance dédié."
             },
             {
-                "name": "SenLab Biotech Sénégal",
-                "specialization": "Réactifs de Laboratoire & Automates de Diagnostics",
+                "name": "Carrefour Médical",
+                "specialization": "Imagerie médicale, cardiologie, exploration fonctionnelle et réanimation",
                 "region": "Dakar",
-                "address": "Zone Industrielle de Sotrac Mermoz, Dakar",
-                "email": "info@senlab-biotech.sn",
-                "website": "https://senlab-biotech.sn",
-                "linkedin_url": "https://linkedin.com/company/senlab-biotech",
-                "phone": "+221 33 860 12 12",
+                "address": "N°229 Entrée CICES - VDN - Dakar - Sénégal",
+                "email": "carrefour.medical@orange.sn",
+                "website": "https://www.carrefourmedical.sn",
+                "linkedin_url": "https://www.linkedin.com/company/carrefourmedical/",
+                "phone": "+221 33 869 04 40",
                 "is_leader": True,
-                "logo": "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=200&q=80",
-                "description": "Spécialiste de la fourniture d'automates de biologie médicale, réactifs de dosage automatisé et solutions intégrées pour laboratoires d'analyses médicales."
+                "logo": "https://www.carrefourmedical.sn/wp-content/uploads/2021/12/logo-cm.png",
+                "description": "Carrefour Médical est un équipementier médical de référence au Sénégal. Il commercialise des scanners, IRM, échographes, moniteurs multiparamétriques et respirateurs de grandes marques internationales, tout en assurant l'assistance technique et la formation du personnel soignant."
             },
             {
-                "name": "Sahel Medical Systems (SMS)",
-                "specialization": "Imagerie Médicale & Radiologie Numérique",
-                "region": "Thiès",
-                "address": "Quartier Dixième, Route de Dakar, Thiès",
-                "email": "contact@sahelmedical.sn",
-                "website": "https://sahelmedical.sn",
-                "linkedin_url": "https://linkedin.com/company/sahel-medical-systems",
-                "phone": "+221 33 951 88 00",
+                "name": "Delta Médical",
+                "specialization": "Gynécologie-obstétrique, stérilisation et équipements hospitaliers généraux",
+                "region": "Dakar",
+                "address": "11 RUE DE THIONG, DAKAR, 110000, SN",
+                "email": "contact@deltamedical.sn",
+                "website": "https://www.deltamedical.sn",
+                "linkedin_url": "https://www.linkedin.com/company/delta-medical-senegal/about/",
+                "phone": "+221 33 889 37 37",
                 "is_leader": False,
-                "logo": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=200&q=80",
-                "description": "Fournisseur d'équipements de radiologie numérique, d'échographie Doppler et de consommables d'imagerie médicale desservant la région de Thiès et du Sahel."
+                "logo": "https://www.deltamedical.sn/wp-content/uploads/2024/04/logo.png",
+                "description": "Fournisseur d'équipements pour la santé maternelle et infantile, tables d'opération, autoclaves de stérilisation et systèmes d'aspiration médicale."
             },
             {
-                "name": "AfriQ Health Technologies",
-                "specialization": "Ingénierie Biomédicale & Blocs Opératoires Clé en Main",
-                "region": "Saint-Louis",
-                "address": "Faubourg Sor, Avenue du Général de Gaulle, Saint-Louis",
-                "email": "support@afriqhealth.sn",
-                "website": "https://afriqhealth.sn",
-                "linkedin_url": "https://linkedin.com/company/afriq-health",
-                "phone": "+221 33 961 33 44",
+                "name": "Dimenter",
+                "specialization": "Biologie médicale, réactifs de laboratoire et maintenance d'automates d'analyse",
+                "region": "Dakar",
+                "address": "Immeuble H – Sacré Cœur 1 BP 1329 – Dakar - Sénégal",
+                "email": "dimenter@dimenter.sn",
+                "website": "https://www.diminter.com/",
+                "linkedin_url": "https://www.linkedin.com/company/diminter/",
+                "phone": "+221 33 825 77 63 / 78 427 92 92",
                 "is_leader": False,
-                "logo": "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=200&q=80",
-                "description": "Entreprise spécialisée dans la conception, l'installation de fluides médicaux, l'aménagement de blocs opératoires et le contrat de maintenance préventive."
+                "logo": "https://www.diminter.com/wp-content/uploads/elementor/thumbs/logo-2-rfa5vczuz67i5toot4jt2up8f8xxt7j5ziqdmish6o.png",
+                "description": "Société spécialisée dans l'équipement de laboratoires d'analyses médicales (hématologie, biochimie, immuno-analyse), la fourniture de réactifs certifiés et la gestion de contrats de maintenance préventive pour automates de laboratoire."
+            },
+            {
+                "name": "Matériel Médical Hospitalier (MMH)",
+                "specialization": "Distribution de matériel médico-chirurgical et consommables hospitaliers",
+                "region": "Dakar",
+                "address": "SIPRES 2, Lot N°3 Liberté 6 En face Mosquée Abass Sall BP : 50856 Dakar, Sénégal",
+                "email": "mmh@mmh-africa.sn",
+                "website": "https://mmh-africa.sn/",
+                "linkedin_url": "https://www.linkedin.com/company/mmh-africa/",
+                "phone": "+221 33 827 44 88 / (+221) 78 161 02 98",
+                "is_leader": True,
+                "logo": "https://mmh-africa.sn/wp-content/uploads/2026/03/logoMMH-site.png",
+                "description": "MMH est un actor majeur dans la fourniture d'équipements pour blocs opératoires, mobilier hospitalier, instrumentation chirurgicale et dispositifs de réanimation. L'entreprise assure également le service après-vente (SAV) et le suivi technique des installations."
+            },
+            {
+                "name": "Technologie Services",
+                "specialization": "Fourniture, installation et maintenance d'équipements biomédicaux, avec un accompagnement global pour vos projets clés en main",
+                "region": "Dakar",
+                "address": "N°94-95 Sacré-Cœur Pyrotechnie Keur Gorgui, Dakar",
+                "email": "info@techservsn.com",
+                "website": "https://www.techservsn.com/",
+                "linkedin_url": "https://www.linkedin.com/company/techserv-sn/about/",
+                "phone": "+221 33 865 05 05",
+                "is_leader": True,
+                "logo": "https://www.techservsn.com/images/LogoTS.png",
+                "description": "Entreprise spécialisée dans la distribution, la maintenance préventive et curative, ainsi que l'installation d'équipements médicaux avancés (imagerie médicale, blocs opératoires, réanimation). Partenaire clé des établissements de santé publics et privés au Sénégal."
             }
         ]
 
