@@ -58,7 +58,7 @@
         <a href="{% url 'device_detail' device.pk %}" class="bg-white rounded-3xl shadow-card border border-outline-variant/40 overflow-hidden flex flex-col group active:scale-[0.98] transition-transform">
             <div class="h-44 bg-gray-50 overflow-hidden relative">
                 {% if device.image %}
-                <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"/>
                 {% else %}
                 <div class="w-full h-full bg-primary/10 flex items-center justify-center text-primary">
                     <span class="material-symbols-outlined text-4xl">biotech</span>
@@ -102,9 +102,9 @@
     <div class="space-y-3">
         {% for company in leader_companies %}
         <a href="{% url 'company_detail' company.pk %}" class="group bg-white p-4 rounded-2xl border border-outline-variant/60 flex items-center gap-4 active:bg-gray-50 transition-all shadow-soft">
-            <div class="w-14 h-14 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0 border border-outline-variant/30 shadow-sm flex items-center justify-center">
+            <div class="size-24 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0 border border-outline-variant/30 shadow-sm flex items-center justify-center">
                 {% if company.logo %}
-                <img src="{{ company.logo }}" alt="{{ company.name }}" class="w-full h-full object-cover"/>
+                <img src="{{ company.logo }}" alt="{{ company.name }}" class="w-full h-full object-contain"/>
                 {% else %}
                 <span class="material-symbols-outlined text-primary text-2xl">business</span>
                 {% endif %}
