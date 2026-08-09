@@ -4,15 +4,34 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='company',
-            name='region',
-            field=models.CharField(choices=[('Dakar', 'Dakar'), ('Diourbel', 'Diourbel'), ('Fatick', 'Fatick'), ('Kaffrine', 'Kaffrine'), ('Kaolack', 'Kaolack'), ('Kédougou', 'Kédougou'), ('Kolda', 'Kolda'), ('Louga', 'Louga'), ('Matam', 'Matam'), ('Saint-Louis', 'Saint-Louis'), ('Sédhiou', 'Sédhiou'), ('Tambacounda', 'Tambacounda'), ('Thiès', 'Thiès'), ('Ziguinchor', 'Ziguinchor')], default='Dakar', max_length=100, verbose_name='Région / Ville (Sénégal)'),
+            model_name="company",
+            name="region",
+            field=models.CharField(
+                choices=[
+                    ("Dakar", "Dakar"),
+                    ("Diourbel", "Diourbel"),
+                    ("Fatick", "Fatick"),
+                    ("Kaffrine", "Kaffrine"),
+                    ("Kaolack", "Kaolack"),
+                    ("Kédougou", "Kédougou"),
+                    ("Kolda", "Kolda"),
+                    ("Louga", "Louga"),
+                    ("Matam", "Matam"),
+                    ("Saint-Louis", "Saint-Louis"),
+                    ("Sédhiou", "Sédhiou"),
+                    ("Tambacounda", "Tambacounda"),
+                    ("Thiès", "Thiès"),
+                    ("Ziguinchor", "Ziguinchor"),
+                ],
+                default="Dakar",
+                max_length=100,
+                verbose_name="Région / Ville (Sénégal)",
+            ),
         ),
     ]

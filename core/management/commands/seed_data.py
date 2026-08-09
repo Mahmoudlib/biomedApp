@@ -1,12 +1,14 @@
 from django.core.management.base import BaseCommand
-from core.models import Device, Company
+
+from core.models import Company, Device
+
 
 class Command(BaseCommand):
-    help = 'Seeding initial biomedical devices and companies data for BioMed Senegal'
+    help = "Seeding initial biomedical devices and companies data for BioMed Senegal"
 
     def handle(self, *args, **options):
-        self.stdout.write('Seeding data...')
-        
+        self.stdout.write("Seeding data...")
+
         # Clear old sample data if re-run
         Device.objects.all().delete()
         Company.objects.all().delete()
@@ -24,7 +26,7 @@ class Command(BaseCommand):
                 "source_url": "https://grenoblecognition.fr/automate-biochimie-definition-fonctionnement/",
                 "verified_by": "APEGBM",
                 "is_featured": True,
-                "views_count": 391
+                "views_count": 391,
             },
             {
                 "name": "ANALYSEUR D'HÉMATOLOGIE",
@@ -37,7 +39,7 @@ class Command(BaseCommand):
                 "source_url": "https://www.antonmedical.com/fra/article-5678177209625242.html",
                 "verified_by": "AEPGBM",
                 "is_featured": False,
-                "views_count": 275
+                "views_count": 275,
             },
             {
                 "name": "CENTRIFUGEUSE",
@@ -50,7 +52,7 @@ class Command(BaseCommand):
                 "source_url": "https://fr.kindle-tech.com/faqs/how-does-a-centrifuge-work-and-for-what-purpose",
                 "verified_by": "APEGBM",
                 "is_featured": False,
-                "views_count": 113
+                "views_count": 113,
             },
             {
                 "name": "MONITEUR MULTIPARAMETRIQUE",
@@ -63,7 +65,7 @@ class Command(BaseCommand):
                 "source_url": "https://www.medical.fr/annonces/6156524-neuf-moniteur-multiparametrique-de-surveillance-edan-im50-ecg-pni-spo2-resp-avec-co2-capnographie-special-jo-paris-2024",
                 "verified_by": "APGBM",
                 "is_featured": False,
-                "views_count": 1201
+                "views_count": 1201,
             },
             {
                 "name": "BISTOURI ÉLECTRIQUE",
@@ -76,8 +78,8 @@ class Command(BaseCommand):
                 "source_url": "https://www.medlikim.com/produit/bistouri-electrique/",
                 "verified_by": "APEGBM",
                 "is_featured": False,
-                "views_count": 1203
-            }
+                "views_count": 1203,
+            },
         ]
 
         for d in devices_data:
@@ -97,7 +99,7 @@ class Command(BaseCommand):
                 "phone": "+221 33 825 74 52",
                 "is_leader": True,
                 "logo": "https://acd.sn/wp-content/uploads/2025/04/acd_1.png",
-                "description": "Afrique Conception Distribution (ACD) accompagne la modernisation des infrastructures sanitaires en fournissant des équipements de haute technologie biomédicale, de biologie médicale et de radiologie, accompagnés d'un service d'ingénierie et de maintenance dédié."
+                "description": "Afrique Conception Distribution (ACD) accompagne la modernisation des infrastructures sanitaires en fournissant des équipements de haute technologie biomédicale, de biologie médicale et de radiologie, accompagnés d'un service d'ingénierie et de maintenance dédié.",
             },
             {
                 "name": "Carrefour Médical",
@@ -110,7 +112,7 @@ class Command(BaseCommand):
                 "phone": "+221 33 869 04 40",
                 "is_leader": True,
                 "logo": "https://www.carrefourmedical.sn/wp-content/uploads/2021/12/logo-cm.png",
-                "description": "Carrefour Médical est un équipementier médical de référence au Sénégal. Il commercialise des scanners, IRM, échographes, moniteurs multiparamétriques et respirateurs de grandes marques internationales, tout en assurant l'assistance technique et la formation du personnel soignant."
+                "description": "Carrefour Médical est un équipementier médical de référence au Sénégal. Il commercialise des scanners, IRM, échographes, moniteurs multiparamétriques et respirateurs de grandes marques internationales, tout en assurant l'assistance technique et la formation du personnel soignant.",
             },
             {
                 "name": "Delta Médical",
@@ -123,7 +125,7 @@ class Command(BaseCommand):
                 "phone": "+221 33 889 37 37",
                 "is_leader": False,
                 "logo": "https://www.deltamedical.sn/wp-content/uploads/2024/04/logo.png",
-                "description": "Fournisseur d'équipements pour la santé maternelle et infantile, tables d'opération, autoclaves de stérilisation et systèmes d'aspiration médicale."
+                "description": "Fournisseur d'équipements pour la santé maternelle et infantile, tables d'opération, autoclaves de stérilisation et systèmes d'aspiration médicale.",
             },
             {
                 "name": "Dimenter",
@@ -136,7 +138,7 @@ class Command(BaseCommand):
                 "phone": "+221 33 825 77 63 / 78 427 92 92",
                 "is_leader": False,
                 "logo": "https://www.diminter.com/wp-content/uploads/elementor/thumbs/logo-2-rfa5vczuz67i5toot4jt2up8f8xxt7j5ziqdmish6o.png",
-                "description": "Société spécialisée dans l'équipement de laboratoires d'analyses médicales (hématologie, biochimie, immuno-analyse), la fourniture de réactifs certifiés et la gestion de contrats de maintenance préventive pour automates de laboratoire."
+                "description": "Société spécialisée dans l'équipement de laboratoires d'analyses médicales (hématologie, biochimie, immuno-analyse), la fourniture de réactifs certifiés et la gestion de contrats de maintenance préventive pour automates de laboratoire.",
             },
             {
                 "name": "Matériel Médical Hospitalier (MMH)",
@@ -149,7 +151,7 @@ class Command(BaseCommand):
                 "phone": "+221 33 827 44 88 / (+221) 78 161 02 98",
                 "is_leader": True,
                 "logo": "https://mmh-africa.sn/wp-content/uploads/2026/03/logoMMH-site.png",
-                "description": "MMH est un actor majeur dans la fourniture d'équipements pour blocs opératoires, mobilier hospitalier, instrumentation chirurgicale et dispositifs de réanimation. L'entreprise assure également le service après-vente (SAV) et le suivi technique des installations."
+                "description": "MMH est un actor majeur dans la fourniture d'équipements pour blocs opératoires, mobilier hospitalier, instrumentation chirurgicale et dispositifs de réanimation. L'entreprise assure également le service après-vente (SAV) et le suivi technique des installations.",
             },
             {
                 "name": "Technologie Services",
@@ -162,8 +164,8 @@ class Command(BaseCommand):
                 "phone": "+221 33 865 05 05",
                 "is_leader": True,
                 "logo": "https://www.techservsn.com/images/LogoTS.png",
-                "description": "Entreprise spécialisée dans la distribution, la maintenance préventive et curative, ainsi que l'installation d'équipements médicaux avancés (imagerie médicale, blocs opératoires, réanimation). Partenaire clé des établissements de santé publics et privés au Sénégal."
-            }
+                "description": "Entreprise spécialisée dans la distribution, la maintenance préventive et curative, ainsi que l'installation d'équipements médicaux avancés (imagerie médicale, blocs opératoires, réanimation). Partenaire clé des établissements de santé publics et privés au Sénégal.",
+            },
         ]
 
         for c in companies_data:
@@ -172,8 +174,9 @@ class Command(BaseCommand):
 
         # Create default superuser if it doesn't exist
         from django.contrib.auth.models import User
-        if not User.objects.filter(username='admin').exists():
-            User.objects.create_superuser('admin', 'admin@biomed-app.com', 'adminpass')
+
+        if not User.objects.filter(username="admin").exists():
+            User.objects.create_superuser("admin", "admin@biomed-app.com", "adminpass")
             self.stdout.write(self.style.SUCCESS("Superuser 'admin' created with password 'adminpass'"))
         else:
             self.stdout.write(self.style.SUCCESS("Superuser 'admin' already exists"))
