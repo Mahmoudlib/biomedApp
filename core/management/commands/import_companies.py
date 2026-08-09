@@ -1,5 +1,7 @@
 from django.core.management.base import BaseCommand
+
 from core.models import Company
+
 
 class Command(BaseCommand):
     help = "Importe et met à jour les données des entreprises biomédicales"
@@ -96,17 +98,14 @@ class Command(BaseCommand):
                 "address": "Quartier Escale, Thiès, Sénégal",
                 "phone": "+221 33 951 20 20",
                 "is_leader": False,
-            }
+            },
         ]
 
         created_count = 0
         updated_count = 0
 
         for company_info in companies_data:
-            obj, created = Company.objects.update_or_create(
-                name=company_info["name"],
-                defaults=company_info
-            )
+            obj, created = Company.objects.update_or_create(name=company_info["name"], defaults=company_info)
             if created:
                 self.stdout.write(self.style.SUCCESS(f"Entreprise créée : {obj.name}"))
                 created_count += 1

@@ -1,0 +1,23 @@
+# Ruff configuration file
+
+# Exclude auto-generated migrations and venv
+exclude = [
+    ".git",
+    ".venv",
+    "**/migrations/*",
+]
+
+# Disable line length checks and allow standalone script import sequences
+line-length = 120
+target-version = "py311"
+
+[lint]
+# Enable Pyflakes (F), Pycodestyle (E, W), and Ruff-specific rules (RUF)
+select = ["F", "E", "W", "RUF"]
+
+# Ignore rules that don't fit Django well:
+# RUF012: Mutable class attributes (e.g. Django model choices, ordering lists)
+# E501: Line too long (we prefer not to strictly enforce line length checks)
+# E402: Module level import not at top of file (needed for django.setup() in standalone scripts)
+# RUF001, RUF002, RUF003: Ambiguous unicode characters (common in French text and comments)
+ignore = ["RUF012", "E501", "E402", "RUF001", "RUF002", "RUF003"]

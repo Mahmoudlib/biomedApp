@@ -1,8 +1,9 @@
 import os
+
 import django
 
 # Configuration de l'environnement Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'biomedApp.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "biomedApp.settings")
 django.setup()
 
 from core.models import Company
@@ -98,17 +99,14 @@ companies_data = [
         "address": "Quartier Escale, Thiès, Sénégal",
         "phone": "+221 33 951 20 20",
         "is_leader": False,
-    }
+    },
 ]
 
 created_count = 0
 updated_count = 0
 
 for company_info in companies_data:
-    obj, created = Company.objects.update_or_create(
-        name=company_info["name"],
-        defaults=company_info
-    )
+    obj, created = Company.objects.update_or_create(name=company_info["name"], defaults=company_info)
     if created:
         print(f"Entreprise créée : {obj.name}")
         created_count += 1
