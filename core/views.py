@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
+from django.core.paginator import Paginator
 from .models import Device, Company
 
 def home_view(request):
@@ -41,14 +42,22 @@ def device_list_view(request):
         devices = devices.filter(category__iexact=category)
 
     total_count = devices.count()
+    paginator = Paginator(devices, 6)
+    page_obj = paginator.get_page(request.GET.get('page'))
     categories = ['Tous', 'Laboratoire', 'Imagerie', 'Bloc opératoire', 'Cardiologie', 'Réanimation']
 
+    query_params = request.GET.copy()
+    query_params.pop('page', None)
+    pagination_query = query_params.urlencode()
+
     context = {
-        'devices': devices,
+        'devices': page_obj,
+        'page_obj': page_obj,
         'total_count': total_count,
         'categories': categories,
         'selected_category': category or 'Tous',
         'query': query,
+        'pagination_query': pagination_query,
         'active_tab': 'devices',
     }
     return render(request, 'devices/device_list.html', context)

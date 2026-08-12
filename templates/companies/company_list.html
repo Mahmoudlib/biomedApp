@@ -51,7 +51,7 @@
             <div class="flex items-start gap-4">
                 <div class="w-16 h-16 bg-gray-50 rounded-2xl overflow-hidden flex-shrink-0 border border-outline-variant/30 shadow-sm flex items-center justify-center">
                     {% if company.logo %}
-                    <img src="{{ company.logo }}" alt="{{ company.name }}" class="w-full h-full object-cover"/>
+                    <img src="{{ company.logo }}" alt="{{ company.name }}" class="w-full h-full object-contain p-2 bg-white"/>
                     {% else %}
                     <span class="material-symbols-outlined text-secondary text-3xl">business</span>
                     {% endif %}
