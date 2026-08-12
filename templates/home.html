@@ -55,7 +55,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {% for device in popular_devices %}
-        <a href="{% url 'device_detail' device.pk %}" class="bg-white rounded-3xl shadow-card border border-outline-variant/40 overflow-hidden flex flex-col group active:scale-[0.98] transition-transform">
+        <a href="{% if device.slug %}{% url 'device_detail' device.slug %}{% else %}{% url 'device_detail_by_id' device.pk %}{% endif %}" class="bg-white rounded-3xl shadow-card border border-outline-variant/40 overflow-hidden flex flex-col group active:scale-[0.98] transition-transform">
             <div class="h-44 bg-gray-50 overflow-hidden relative">
                 {% if device.image %}
                 <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>

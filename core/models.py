@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 class Device(models.Model):
     CATEGORY_CHOICES = [
@@ -10,12 +11,15 @@ class Device(models.Model):
     ]
 
     name = models.CharField(max_length=255, verbose_name="Nom de l'appareil")
+    slug = models.SlugField(max_length=255, unique=True, blank=True, verbose_name="Identifiant d'URL")
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default='Laboratoire', verbose_name="Spécialité / Catégorie")
-    image = models.URLField(max_length=500, blank=True, verbose_name="URL de l'image")
+    image = models.CharField(max_length=500, blank=True, verbose_name="URL ou chemin de l'image")
+    image_source_label = models.CharField(max_length=255, blank=True, verbose_name="Source de l'image")
     description = models.TextField(verbose_name="Description clinique & aperçu")
     working_principle = models.TextField(verbose_name="Principe de fonctionnement")
     maintenance_protocol = models.TextField(verbose_name="Protocole de maintenance préventive")
-    source_url = models.URLField(max_length=500, verbose_name="Lien de la source obligatoire")
+    source_url = models.URLField(max_length=500, blank=True, verbose_name="Lien de la source")
+    source_label = models.CharField(max_length=255, blank=True, verbose_name="Source textuelle")
     verified_by = models.CharField(max_length=255, default="Comité d'Expertise Biomédicale du Sénégal (AETQBM)", verbose_name="Vérifié par")
     views_count = models.PositiveIntegerField(default=1200, verbose_name="Nombre de vues")
     badge_label = models.CharField(max_length=50, default="New Tech", verbose_name="Badge / Étiquette")
@@ -30,6 +34,11 @@ class Device(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.category})"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
 class Company(models.Model):

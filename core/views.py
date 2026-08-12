@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from .models import Device, Company
 
@@ -54,10 +54,10 @@ def device_list_view(request):
     return render(request, 'devices/device_list.html', context)
 
 
-def device_detail_view(request, pk):
-    device = get_object_or_404(Device, pk=pk)
+def device_detail_view(request, slug):
+    device = get_object_or_404(Device, slug=slug)
     # Increment view count
-    Device.objects.filter(pk=pk).update(views_count=device.views_count + 1)
+    Device.objects.filter(pk=device.pk).update(views_count=device.views_count + 1)
     device.refresh_from_db()
 
     # Split maintenance steps into clean lines if structured with numbers
@@ -71,6 +71,20 @@ def device_detail_view(request, pk):
         'active_tab': 'devices',
     }
     return render(request, 'devices/device_detail.html', context)
+
+
+def device_detail_by_id_view(request, pk):
+    legacy_device_slugs = {
+        49: 'echographe',
+        67: 'echographe',
+        85: 'echographe',
+    }
+
+    if not Device.objects.filter(pk=pk).exists() and pk in legacy_device_slugs:
+        return redirect('device_detail', slug=legacy_device_slugs[pk], permanent=False)
+
+    device = get_object_or_404(Device, pk=pk)
+    return device_detail_view(request, device.slug)
 
 
 def company_list_view(request):

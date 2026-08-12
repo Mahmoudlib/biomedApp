@@ -47,7 +47,7 @@ class BioMedAppTests(TestCase):
         self.assertContains(response_empty, "Aucun appareil trouvé")
 
     def test_device_detail_view(self):
-        response = self.client.get(reverse('device_detail', args=[self.device.pk]))
+        response = self.client.get(reverse('device_detail', args=[self.device.slug]))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Test ECG")
         self.assertContains(response, "Test Principle")
