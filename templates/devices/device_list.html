@@ -47,7 +47,7 @@
 <section class="space-y-4">
     {% if devices %}
         {% for device in devices %}
-        <a href="{% url 'device_detail' device.pk %}" class="bg-white rounded-2xl p-4 border border-outline-variant/60 shadow-soft flex flex-col sm:flex-row gap-4 group active:scale-[0.99] transition-all">
+        <a href="{% if device.slug %}{% url 'device_detail' device.slug %}{% else %}{% url 'device_detail_by_id' device.pk %}{% endif %}" class="bg-white rounded-2xl p-4 border border-outline-variant/60 shadow-soft flex flex-col sm:flex-row gap-4 group active:scale-[0.99] transition-all">
             <div class="w-full sm:w-36 h-36 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0 relative">
                 {% if device.image %}
                 <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>

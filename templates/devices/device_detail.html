@@ -27,8 +27,8 @@
         </div>
 
         {% if device.image %}
-        <div class="w-full aspect-video rounded-2xl overflow-hidden border border-white/20 shadow-lg">
-            <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-cover"/>
+        <div class="w-full rounded-2xl overflow-hidden border border-white/20 shadow-lg bg-white/95">
+            <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full max-h-[22rem] object-contain"/>
         </div>
         {% endif %}
 
@@ -108,6 +108,26 @@
                 </div>
                 <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">open_in_new</span>
             </a>
+            {% endif %}
+
+            {% if device.source_label %}
+            <div class="bg-white p-3.5 rounded-xl border border-primary/10 flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-base">article</span>
+                <div>
+                    <div class="font-bold text-on-surface">Source documentaire</div>
+                    <div class="text-on-surface-variant opacity-70">{{ device.source_label }}</div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if device.image_source_label %}
+            <div class="bg-white p-3.5 rounded-xl border border-primary/10 flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-base">image</span>
+                <div>
+                    <div class="font-bold text-on-surface">Source de l'image</div>
+                    <div class="text-on-surface-variant opacity-70">{{ device.image_source_label }}</div>
+                </div>
+            </div>
             {% endif %}
         </div>
     </div>
