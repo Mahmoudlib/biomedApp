@@ -27,7 +27,7 @@
             <span class="material-symbols-outlined text-on-surface-variant">search</span>
             <input name="q" value="{{ query }}" class="bg-transparent border-none w-full text-sm text-on-surface placeholder:text-on-surface-variant/60 focus:ring-0 px-3" placeholder="Rechercher un équipement..." type="text"/>
         </div>
-        <button type="submit" class="bg-primary text-white h-14 w-14 rounded-full flex items-center justify-center shadow-soft hover:bg-primary/90 transition-colors active:scale-95">
+        <button type="submit" class="bg-primary text-white size-14 rounded-full flex items-center justify-center shadow-soft hover:bg-primary/90 transition-colors active:scale-95">
             <span class="material-symbols-outlined">search</span>
         </button>
     </form>
@@ -35,7 +35,7 @@
     <!-- Category Filter Chips -->
     <div class="flex overflow-x-auto gap-2.5 pb-2 scrollbar-hide -mx-5 px-5">
         {% for cat in categories %}
-        <a href="?category={{ cat }}{% if query %}&q={{ query }}{% endif %}" 
+        <a href="?category={{ cat }}{% if query %}&q={{ query }}{% endif %}"
            class="px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap flex-shrink-0 transition-transform active:scale-95 border {% if selected_category == cat %}bg-primary text-white border-primary shadow-sm{% else %}bg-white text-on-surface border-outline-variant/60 hover:bg-primary/5{% endif %}">
             {{ cat }}
         </a>
@@ -50,7 +50,7 @@
         <a href="{% url 'device_detail' device.pk %}" class="bg-white rounded-2xl p-4 border border-outline-variant/60 shadow-soft flex flex-col sm:flex-row gap-4 group active:scale-[0.99] transition-all">
             <div class="w-full sm:w-36 h-36 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0 relative">
                 {% if device.image %}
-                <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"/>
                 {% else %}
                 <div class="w-full h-full flex items-center justify-center text-primary bg-primary/5">
                     <span class="material-symbols-outlined text-4xl">biotech</span>

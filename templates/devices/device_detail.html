@@ -28,7 +28,7 @@
 
         {% if device.image %}
         <div class="w-full aspect-video rounded-2xl overflow-hidden border border-white/20 shadow-lg">
-            <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-cover"/>
+            <img src="{{ device.image }}" alt="{{ device.name }}" class="w-full h-full object-contain"/>
         </div>
         {% endif %}
 
@@ -75,12 +75,12 @@
             </div>
             <h3 class="font-bold text-base text-on-surface">Protocole de maintenance préventive</h3>
         </div>
-        
+
         <div class="space-y-2">
             {% for step in maintenance_steps %}
-            <div class="flex items-start gap-3 p-3 rounded-xl bg-gray-50 border border-outline-variant/30">
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-outline-variant/30">
                 <span class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{{ forloop.counter }}</span>
-                <p class="text-xs text-on-surface-variant font-medium leading-relaxed">{{ step }}</p>
+                <p class="text-xs font-medium leading-relaxed">{{ step }}</p>
             </div>
             {% endfor %}
         </div>
@@ -99,7 +99,7 @@
 
             {% if device.source_url %}
             <a href="{{ device.source_url }}" target="_blank" rel="noopener noreferrer" class="bg-white p-3.5 rounded-xl border border-primary/10 flex items-center justify-between gap-3 group hover:border-primary/40 transition-colors">
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1">
                     <span class="material-symbols-outlined text-primary text-base">link</span>
                     <div>
                         <div class="font-bold text-on-surface group-hover:text-primary transition-colors">Consulter la source </div>

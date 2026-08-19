@@ -1,7 +1,8 @@
-from django.urls import path
+from django.urls import include, path
 from . import views
 
 urlpatterns = [
+    path("__reload__/", include("django_browser_reload.urls")),
     path('', views.home_view, name='home'),
     path('devices/', views.device_list_view, name='device_list'),
     path('devices/<int:pk>/', views.device_detail_view, name='device_detail'),
