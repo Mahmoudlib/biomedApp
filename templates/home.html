@@ -104,7 +104,7 @@
         <a href="{% url 'company_detail' company.pk %}" class="group bg-white p-4 rounded-2xl border border-outline-variant/60 flex items-center gap-4 active:bg-gray-50 transition-all shadow-soft">
             <div class="w-14 h-14 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0 border border-outline-variant/30 shadow-sm flex items-center justify-center">
                 {% if company.logo %}
-                <img src="{{ company.logo }}" alt="{{ company.name }}" class="w-full h-full object-cover"/>
+                <img src="{{ company.logo }}" alt="{{ company.name }}" class="w-full h-full object-contain p-2 bg-white"/>
                 {% else %}
                 <span class="material-symbols-outlined text-primary text-2xl">business</span>
                 {% endif %}

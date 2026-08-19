@@ -75,6 +75,43 @@
             </div>
         </a>
         {% endfor %}
+
+        {% if page_obj.has_other_pages %}
+        <nav class="bg-white rounded-2xl p-3 border border-outline-variant/60 shadow-soft flex items-center justify-between gap-3" aria-label="Pagination des appareils">
+            {% if page_obj.has_previous %}
+            <a href="?{% if pagination_query %}{{ pagination_query }}&{% endif %}page={{ page_obj.previous_page_number }}" class="inline-flex items-center gap-1 rounded-xl px-3 py-2 text-xs font-bold text-primary bg-primary/10 active:scale-95 transition-transform">
+                <span class="material-symbols-outlined text-sm">chevron_left</span>
+                Précédent
+            </a>
+            {% else %}
+            <span class="inline-flex items-center gap-1 rounded-xl px-3 py-2 text-xs font-bold text-on-surface-variant/40 bg-gray-50">
+                <span class="material-symbols-outlined text-sm">chevron_left</span>
+                Précédent
+            </span>
+            {% endif %}
+
+            <div class="flex items-center gap-1">
+                {% for page_number in page_obj.paginator.page_range %}
+                <a href="?{% if pagination_query %}{{ pagination_query }}&{% endif %}page={{ page_number }}"
+                   class="w-9 h-9 rounded-xl text-xs font-extrabold flex items-center justify-center {% if page_obj.number == page_number %}bg-primary text-white shadow-sm{% else %}bg-gray-50 text-on-surface-variant hover:bg-primary/10 hover:text-primary{% endif %}">
+                    {{ page_number }}
+                </a>
+                {% endfor %}
+            </div>
+
+            {% if page_obj.has_next %}
+            <a href="?{% if pagination_query %}{{ pagination_query }}&{% endif %}page={{ page_obj.next_page_number }}" class="inline-flex items-center gap-1 rounded-xl px-3 py-2 text-xs font-bold text-primary bg-primary/10 active:scale-95 transition-transform">
+                Suivant
+                <span class="material-symbols-outlined text-sm">chevron_right</span>
+            </a>
+            {% else %}
+            <span class="inline-flex items-center gap-1 rounded-xl px-3 py-2 text-xs font-bold text-on-surface-variant/40 bg-gray-50">
+                Suivant
+                <span class="material-symbols-outlined text-sm">chevron_right</span>
+            </span>
+            {% endif %}
+        </nav>
+        {% endif %}
     {% else %}
         <div class="bg-white rounded-2xl p-8 text-center border border-outline-variant/60 shadow-soft space-y-3">
             <span class="material-symbols-outlined text-4xl text-on-surface-variant/40">search_off</span>

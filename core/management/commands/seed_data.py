@@ -135,6 +135,76 @@ class Command(BaseCommand):
                 "verified_by": "Document pédagogique BioMed",
                 "is_featured": False,
                 "views_count": 517
+            },
+            {
+                "name": "DÉFIBRILLATEUR",
+                "category": "Réanimation",
+                "badge_label": "Urgence vitale",
+                "image": "/static/devices/defibrillateur-rythmo.png",
+                "image_source_label": "Rythmo.fr",
+                "description": "Le défibrillateur est un dispositif de réanimation utilisé pour traiter certains troubles graves du rythme cardiaque, notamment la fibrillation ventriculaire et la tachycardie ventriculaire sans pouls. Il permet de délivrer un choc électrique contrôlé afin d'aider le cœur à retrouver une activité électrique organisée.",
+                "working_principle": "L'appareil analyse ou affiche l'activité électrique cardiaque grâce à des électrodes appliquées sur le thorax. Lorsqu'un rythme choquable est détecté, un condensateur se charge puis libère une impulsion électrique de forte énergie à travers le myocarde. Cette dépolarisation massive interrompt l'activité électrique anarchique et peut permettre la reprise d'un rythme cardiaque efficace.",
+                "maintenance_protocol": "•\tVérifier l'état de charge et la date de remplacement de la batterie.\n•\tContrôler la présence, l'intégrité et la date de péremption des électrodes.\n•\tEffectuer l'autotest ou le test de fonctionnement selon les recommandations du fabricant.\n•\tInspecter les câbles, connecteurs, palettes et accessoires.\n•\tVérifier l'écran, les alarmes, l'imprimante et les messages d'erreur.\n•\tNettoyer l'appareil après utilisation et documenter les interventions.\n•\tRéaliser les contrôles de sécurité électrique et de performance périodiques.",
+                "source_url": "https://www.fda.gov/medical-devices/cardiovascular-devices/automated-external-defibrillators-aeds",
+                "verified_by": "FDA / WHO Medical Device Technical Series",
+                "is_featured": False,
+                "views_count": 641
+            },
+            {
+                "name": "ÉLECTROCARDIOGRAPHE",
+                "category": "Cardiologie",
+                "badge_label": "Diagnostic cardiaque",
+                "image": "/static/devices/electrocardiographe-queralto.png",
+                "image_source_label": "Queralto",
+                "description": "L'électrocardiographe est un appareil de diagnostic qui enregistre l'activité électrique du cœur sous forme de tracés appelés électrocardiogrammes. Il est utilisé pour évaluer la fréquence cardiaque, le rythme, la conduction électrique et certains signes d'ischémie, d'infarctus ou de troubles électrolytiques.",
+                "working_principle": "Des électrodes placées sur les membres et le thorax détectent les différences de potentiel générées par la dépolarisation et la repolarisation du muscle cardiaque. Les signaux de faible amplitude sont amplifiés, filtrés, numérisés puis affichés ou imprimés sous forme d'ondes P, complexes QRS et ondes T sur plusieurs dérivations.",
+                "maintenance_protocol": "•\tVérifier l'état des câbles patient, électrodes, pinces et ventouses.\n•\tContrôler la qualité du papier thermique ou du module d'impression.\n•\tNettoyer les accessoires et surfaces externes après utilisation.\n•\tTester l'affichage, le clavier, la batterie et l'alimentation secteur.\n•\tVérifier la qualité du signal avec un simulateur ECG si disponible.\n•\tContrôler les filtres, paramètres d'acquisition et vitesses d'enregistrement.\n•\tDocumenter les défauts de tracé, parasites ou dérives de ligne de base.",
+                "source_url": "https://medlineplus.gov/lab-tests/electrocardiogram/",
+                "verified_by": "MedlinePlus",
+                "is_featured": False,
+                "views_count": 588
+            },
+            {
+                "name": "POUSSE-SERINGUE ÉLECTRIQUE",
+                "category": "Réanimation",
+                "badge_label": "Perfusion contrôlée",
+                "image": "/static/devices/pousse-seringue-dircoma.png",
+                "image_source_label": "Dircoma",
+                "description": "Le pousse-seringue électrique est une pompe de perfusion permettant l'administration précise et continue de médicaments ou de fluides à faible débit. Il est très utilisé en réanimation, anesthésie, néonatologie et soins intensifs pour les traitements nécessitant une dose stable et contrôlée.",
+                "working_principle": "Une seringue est fixée dans un berceau mécanique. Un moteur pas-à-pas déplace progressivement le piston selon le débit programmé. Des capteurs surveillent la position de la seringue, la pression, l'occlusion, la fin de perfusion et l'état de l'alimentation. Les alarmes préviennent l'utilisateur en cas d'anomalie.",
+                "maintenance_protocol": "•\tVérifier l'état du berceau de seringue, du poussoir et du système de verrouillage.\n•\tContrôler le fonctionnement des alarmes d'occlusion, de fin de seringue et de batterie faible.\n•\tTester la batterie, le chargeur et l'alimentation secteur.\n•\tNettoyer les surfaces externes et retirer les résidus de produits.\n•\tVérifier la précision du débit avec un analyseur de perfusion si disponible.\n•\tContrôler les mises à jour logicielles et les bibliothèques de médicaments.\n•\tDocumenter les tests et retirer l'appareil du service en cas d'écart de débit.",
+                "source_url": "https://www.fda.gov/medical-devices/infusion-pumps/what-infusion-pump",
+                "verified_by": "FDA",
+                "is_featured": False,
+                "views_count": 572
+            },
+            {
+                "name": "AUTOCLAVE",
+                "category": "Laboratoire",
+                "badge_label": "Stérilisation",
+                "image": "/static/devices/autoclave-nuve.png",
+                "image_source_label": "Nuve",
+                "description": "L'autoclave est un équipement de stérilisation utilisant la vapeur d'eau sous pression pour éliminer les micro-organismes, y compris les spores, sur les instruments et matériels compatibles avec la chaleur et l'humidité. Il est essentiel dans les laboratoires, blocs opératoires, services dentaires et unités de soins.",
+                "working_principle": "La chambre de stérilisation est fermée hermétiquement, puis l'air est évacué ou déplacé par de la vapeur saturée. La pression permet d'atteindre des températures élevées, généralement autour de 121 °C ou 134 °C selon le cycle. L'efficacité dépend du contact direct de la vapeur avec la charge, de la température, de la pression et du temps d'exposition.",
+                "maintenance_protocol": "•\tNettoyer la chambre, les paniers, plateaux et joints de porte.\n•\tVérifier le niveau d'eau, la qualité de vapeur et l'absence de fuite.\n•\tContrôler les cycles avec indicateurs chimiques et biologiques selon le protocole du service.\n•\tInspecter le joint de porte, les filtres, soupapes et conduites de drainage.\n•\tVérifier les sondes de température, pression et l'enregistreur de cycle.\n•\tEffectuer les tests de vide ou Bowie-Dick pour les autoclaves à prévide.\n•\tDocumenter les cycles non conformes et immobiliser l'appareil si nécessaire.",
+                "source_url": "https://www.cdc.gov/infection-control/hcp/disinfection-sterilization/steam-sterilization.html",
+                "verified_by": "CDC",
+                "is_featured": False,
+                "views_count": 536
+            },
+            {
+                "name": "INCUBATEUR NÉONATAL",
+                "category": "Réanimation",
+                "badge_label": "Néonatologie",
+                "image": "/static/devices/incubateur-neonatal.png",
+                "image_source_label": "referencemedicosarl.com",
+                "description": "L'incubateur néonatal, ou couveuse, est un dispositif destiné à maintenir un environnement contrôlé pour les nouveau-nés prématurés, de faible poids ou nécessitant une surveillance rapprochée. Il aide à stabiliser la température, limite les pertes de chaleur et facilite les soins en néonatologie.",
+                "working_principle": "L'appareil crée une enceinte thermique autour du nouveau-né. Un système de chauffage, de ventilation et parfois d'humidification régule la température de l'air ou la température cutanée via une sonde patient. Des alarmes surveillent les écarts de température, les défauts de capteur, l'ouverture des accès et les problèmes d'alimentation.",
+                "maintenance_protocol": "•\tNettoyer et désinfecter l'habitacle, les hublots, joints et matelas entre chaque patient.\n•\tVérifier le bon fonctionnement du chauffage, ventilateur et système d'humidification.\n•\tContrôler les sondes de température et les alarmes de sécurité.\n•\tVérifier les filtres à air, l'état des joints et l'intégrité de l'enceinte.\n•\tTester la batterie ou alimentation de secours si disponible.\n•\tContrôler la stabilité thermique avec un thermomètre de référence.\n•\tDocumenter les cycles de nettoyage, contrôles et interventions techniques.",
+                "source_url": "https://www.who.int/publications/i/item/WHO_RHT_MSM_97.2",
+                "verified_by": "WHO",
+                "is_featured": False,
+                "views_count": 604
             }
         ]
 
